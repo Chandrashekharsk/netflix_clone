@@ -16,13 +16,13 @@ const app = express();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+// app.use(cors());
 
-// const corsOptions = {
-//     origin:'https://netflix-3ppp.onrender.com/',
-//     credentials:true
-// }
-// app.use(cors(corsOptions));
+const corsOptions = {
+    origin:`${process.env.ORIGIN}`,
+    credentials:true
+}
+app.use(cors(corsOptions));
 
 app.use("/api/v1/user", userRoute);
 
