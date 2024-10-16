@@ -1,5 +1,3 @@
-//step-1
-// const express = require("express");
 import express from "express";
 import dotenv from "dotenv";
 import databaseConnection from "./utils/database.js";
@@ -18,15 +16,14 @@ const app = express();
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 // const corsOptions = {
 //     origin:'https://netflix-3ppp.onrender.com/',
 //     credentials:true
 // }
 // app.use(cors(corsOptions));
-app.use(cors());
 
-// api
 app.use("/api/v1/user", userRoute);
 
 app.listen(process.env.PORT,() => {

@@ -28,7 +28,7 @@ const Login = () => {
             //login
             const user = {email,password}; 
             try {
-                const res = await axios.post(`${API_END_POINT}/login`, user,{
+                const res = await axios.post(`${process.env.REACT_APP_API_URL}/login`, user,{
                     headers:{
                         'Content-Type':'application/json'
                     },
@@ -50,17 +50,22 @@ const Login = () => {
             dispatch(setLoading(true));
             const user = {fullName, email, password};
             try {
-                const res = await axios.post(`${API_END_POINT}/register`,user,{
+                console.log(" start");
+                console.log(fullName, email, password)
+                console.log(" end");
+                const res = await axios.post(`${process.env.REACT_APP_API_URL}/register`,user,{
                     headers:{
                         'Content-Type':'application/json'
                     },
                     withCredentials:true
                 });
                 if(res.data.success){
+                    console.log("success");
                     toast.success(res.data.message);
                 }
                 setIsLogin(true);
             } catch (error) {
+                console.log("not success")
                 toast.error(error.response.data.message);
                 console.log(error);
             } finally{
