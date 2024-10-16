@@ -1,7 +1,6 @@
 import React from 'react'
 import { IoIosArrowDropdown } from "react-icons/io";
 import {useSelector,useDispatch} from "react-redux" 
-import { API_END_POINT } from '../utils/constant';
 import axios from "axios";
 import { setUser } from '../redux/userSlice';
 import {useNavigate} from "react-router-dom";
@@ -30,10 +29,17 @@ const Header = () => {
     const toggleHandler = () => {
         dispatch(setToggle());
     }
+    const handleClick = ()=>{
+        navigate("/browse");
+    }
  
     return (
         <div className='absolute z-10 flex w-full items-center justify-between px-6 bg-gradient-to-b from-black'>
-            <img className='w-56' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1198px-Netflix_2015_logo.svg.png" alt="netflix-logo" />
+            <button onClick={handleClick}>
+
+            <img className='w-56 cursor-pointer' src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1198px-Netflix_2015_logo.svg.png" alt="netflix-logo" />
+            </button>
+            
             {
                 user && (
                     <div className='flex items-center'>

@@ -19,7 +19,7 @@ const MainContainer = () => {
     }, 5000); // Change movie every 5 seconds
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, [movie]); 
+  }); 
 
   if (!id || !title || !overview) return null;
 
